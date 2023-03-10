@@ -1,4 +1,5 @@
 import "./style.css";
+import { fromUnixTime } from "date-fns";
 
 
 const img = document.querySelector("img");
@@ -38,12 +39,23 @@ button.addEventListener("click", () => {
 });
 
 fetch(
-  `https://api.giphy.com/v1/gifs/translate?api_key=SNx0tORQLx6LOnuvvFOR1GR6g5GIa6gc&s=${searchTerm}`,
+  `https://api.openweathermap.org/data/2.5/weather?zip=08505,us&appid=f3337944daf97f3814e94aa737748161&units=imperial`,
   { mode: "cors" }
 )
   .then(function (response) {
     return response.json();
   })
   .then(function (response) {
-    img.src = response.data.images.original.url;
+    console.log(response);
+
+    const locationName= response.name;
+    const temp= (`Current temperature: ${Math.round(response.main.temp)}\u00B0 F`); //degree symbol= \u00B0
+    const feelsLike= (`Feels like: ${Math.round(response.main.feels_like)}\u00B0 F`);
+    const sunrise = fromUnixTime(response.sys.sunrise);
+    const sunset = fromUnixTime(response.sys.sunset);
+    console.log(locationName);
+    console.log(temp);
+    console.log(feelsLike);
+    console.log(sunrise);
+    console.log(sunset);
   });
