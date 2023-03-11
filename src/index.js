@@ -1,5 +1,5 @@
 import "./style.css";
-import { fromUnixTime } from "date-fns";
+import { fromUnixTime, format } from "date-fns";
 
 
 const img = document.querySelector("img");
@@ -48,24 +48,49 @@ fetch(
   .then(function (response) {
     console.log(response);
 
-    const locationName= response.name;
-    const temp= (`Current temperature: ${Math.round(response.main.temp)}\u00B0 F`); //degree symbol= \u00B0
-    const feelsLike= (`Feels like: ${Math.round(response.main.feels_like)}\u00B0 F`);
+    const locationName = response.name;
+    const temp = `Current temperature: ${Math.round(
+      response.main.temp
+    )}\u00B0 F`; //degree symbol= \u00B0
+    const feelsLike = `Feels like: ${Math.round(
+      response.main.feels_like
+    )}\u00B0 F`;
     const rawSunriseData = fromUnixTime(response.sys.sunrise);
     const rawSunsetData = fromUnixTime(response.sys.sunset);
 
     console.log(locationName);
     console.log(temp);
     console.log(feelsLike);
-    console.log(rawSunriseData);
-    console.log(rawSunsetData);
+    console.log(rawSunriseData); //this is an object
+    console.log(rawSunsetData); //this is an object
 
-    // console.log(typeof(rawSunriseData)); //object
-    console.log((JSON.stringify(rawSunriseData))); //object to string
-    const rawSunriseString=(JSON.stringify(rawSunriseData));
-    const rawSunriseQuotesRm= rawSunriseString.replace(/"/g, "");
-    console.log(rawSunriseQuotesRm);
-    // console.log((JSON.stringify(rawSunriseData)).split("T"));
-    // const rawSunriseDataArr=rawSunriseData.split(" ");
-    // console.log(rawSunriseDataArr);
+    console.log(JSON.stringify(rawSunriseData));
+    const rawSunriseString = JSON.stringify(rawSunriseData); //object to string
+    const rawSunriseStrFiltered = rawSunriseString.replace(/"|.000Z/g, ""); //remove junk
+    console.log(rawSunriseStrFiltered);
+    const rawSunriseArray= (rawSunriseStrFiltered.split("T"));
+    console.log(rawSunriseArray);
+    const sunriseDateArr = rawSunriseArray[0].split("-");
+    const sunriseTimeArr = rawSunriseArray[1].split(":");
+    console.log(sunriseDateArr);
+    console.log(sunriseTimeArr);
+
+    const month= ((sunriseDateArr[1])-1);
+    const day = sunriseDateArr[2];
+    const year = sunriseDateArr[0];
+
+    const sunriseHour= ((sunriseTimeArr[0])-5);
+    const sunriseMin = sunriseTimeArr[1];
+
+    const sunriseDate = format(new Date(year, month, day), "eeee MMM/do/yyyy");
+    console.log(`Completed Date: ${sunriseDate}`);
+
+    function sunriseTime() {
+      if (sunriseHour<12) {
+        return (`${sunriseHour}:${sunriseMin} am`);
+      }else if (sunriseHour>12){
+        return (`${sunriseHour-12}:${sunriseMin} pm`);
+      }
+    };
+    console.log(sunriseTime());
   });
