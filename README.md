@@ -99,8 +99,8 @@
     "eslint.validate": ["javascript"]
     }
    ```
- - In the `.eslintrc.json` file. 
-  - Clear this page and paste the following code block:
+  - In the `.eslintrc.json` file. 
+    - Clear this page and paste the following code block:
   ```javascript
     {
     "env": {
