@@ -1,37 +1,105 @@
 # weather-app
-The Odin Project, Weather App. 
+## The Odin Project, Weather App. 
+### Setting Up The Enviroment
 
-Steps:
+- Create repo.
+- Git clone SSH key into teminal and cd into it.
 
-create repo
-git clone SSH key into teminal and cd into it
-into terminal "npm init -y"
-into terminal "npm install webpack webpack-cli --save-dev"
-in VS Code, create "dist", and "src" folder
-create ".gitignore" file, and type "node_ignore" in it
+- In the **terminal**
+ - Type `npm init -y` to initialize it/create a JSON file. 
+ - Type `npm install webpack webpack-cli --save-dev` to install webpack.
+ - Type `npm install eslint --save-dev` to setup eslint. 
+ - Type `./node_modules/.bin/eslint --init` 
+  - There are several questions that need to be answered.
+   - Need help with those questions? Click on [this link.](https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code#step-3-installing-the-eslint-extension)
+ - Type `npm install -g install-peerdeps install-peerdeps --dev eslint-config-airbnb`.
+ - Type `npm install --save-dev style-loader css-loader`.
+ - Type `npm install --save-dev html-webpack-plugin`.
+ - Type `npm install -D babel-loader @babel/core @babel/preset-env webpack`.
+ - Type `npm install @babel/cli"`
 
-in src folder create "index.js" file
-in VS Code create "webpack.config.js" file
-copy/paste webpack.config info from previous project
-in src folder create "template.html" file
-in webpack.config file, go to script and add ("build": "webpack", (BREAK LINE) "watch": "webpack --watch")
-in terminal "npm install eslint --save-dev"
-in terminal "./node_modules/.bin/eslint --init" //will be asked questions in the terminal
+- In **VS Code**  
+ - Create a `dist` folder.
+ - Create a `src` folder.
+  - Create a `index.js` file.
+   - At that very top of this file, add `import './style.css';`.
+  - Create a `template.html` file.
+  - Create a `style.css` file. 
+ - Create a `.gitignore` file, and type `node_modules` in it, to ignore all those files. 
+ - Create a `webpack.config.js` file.
+  - Paste the following block code:
 
-in VC Code command pallete type "Preferences: Open Workspace Settings (JSON)"
-in this page type...
+  ```javascript
+    const path = require("path");
+    const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-{
+    module.exports = {
+    mode: "development",
+    entry: "./src/index.js",
+    output: {
+        filename: "main.js", // js file in dist
+        path: path.resolve(__dirname, "dist"),
+        clean: true,
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+        // html file in dist
+        title: "To-do List",
+        filename: "index.html",
+        template: path.resolve(__dirname, "src/template.html"),
+        }),
+    ],
+    devtool: "inline-source-map",
+    module: {
+        rules: [
+        {
+            test: /\.css$/i,
+            use: ["style-loader", "css-loader"],
+        },
+        {
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: "asset/resource",
+        },
+        {
+            test: /\.(woff|woff2|eot|ttf|otf)$/i,
+            type: "asset/resource",
+        },
+        {
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+            loader: "babel-loader",
+            options: {
+                presets: [["@babel/preset-env", { targets: "defaults" }]],
+            },
+            },
+        },
+        ],
+    },
+    };
+  ```
+ - In the `package.json` file.
+  - Go to `script` section and replace it's contents with the following code block:
+  ```javascript
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  ``` 
+ - Open the Commande Palette.
+  - Type and open `Preferences: Open Workspace Settings (JSON)`.
+   - Clear this page and paste the following code block:
+   ```javascript
+    {
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
     "eslint.validate": ["javascript"]
-}
-
-
-go to .eslintrc.json file and copy/past the following...
-
-{
+    }
+   ```
+ - In the `.eslintrc.json` file. 
+  - Clear this page and paste the following code block:
+  ```javascript
+    {
     "env": {
         "browser": true,
         "es2021": true
@@ -48,21 +116,6 @@ go to .eslintrc.json file and copy/past the following...
       "quotes": ["error", "double"],
       "no-unused-vars": "off"
     }
-}
-
-add any additional rules/rule changes you would like
-
-into terminal copy/paste...
-
-"npm install -g install-peerdeps
-install-peerdeps --dev eslint-config-airbnb"
-
-"npm install --save-dev style-loader css-loader"
-"npm install --save-dev html-webpack-plugin"
-"npm install -D babel-loader @babel/core @babel/preset-env webpack"
-"npm install @babel/cli"
-
-
-in src folder create "style.css" file
-in src folder, in index.js file add "import './style.css';" into file
-
+    }
+  ```
+   - Add additional rules, or make changes as needed. 

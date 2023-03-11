@@ -51,11 +51,21 @@ fetch(
     const locationName= response.name;
     const temp= (`Current temperature: ${Math.round(response.main.temp)}\u00B0 F`); //degree symbol= \u00B0
     const feelsLike= (`Feels like: ${Math.round(response.main.feels_like)}\u00B0 F`);
-    const sunrise = fromUnixTime(response.sys.sunrise);
-    const sunset = fromUnixTime(response.sys.sunset);
+    const rawSunriseData = fromUnixTime(response.sys.sunrise);
+    const rawSunsetData = fromUnixTime(response.sys.sunset);
+
     console.log(locationName);
     console.log(temp);
     console.log(feelsLike);
-    console.log(sunrise);
-    console.log(sunset);
+    console.log(rawSunriseData);
+    console.log(rawSunsetData);
+
+    // console.log(typeof(rawSunriseData)); //object
+    console.log((JSON.stringify(rawSunriseData))); //object to string
+    const rawSunriseString=(JSON.stringify(rawSunriseData));
+    const rawSunriseQuotesRm= rawSunriseString.replace(/"/g, "");
+    console.log(rawSunriseQuotesRm);
+    // console.log((JSON.stringify(rawSunriseData)).split("T"));
+    // const rawSunriseDataArr=rawSunriseData.split(" ");
+    // console.log(rawSunriseDataArr);
   });
