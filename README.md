@@ -31,7 +31,7 @@
     - Create a `style.css` file. 
   - Create a `.gitignore` file, and type `node_modules` in it, to ignore all those files. 
   - Create a `webpack.config.js` file.
-    - Paste the following block code:
+    - Paste the following block code (Don't forget to change the `title` in the `plugins:` section):
 
   ```javascript
     const path = require("path");
