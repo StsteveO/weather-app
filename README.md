@@ -2,32 +2,35 @@
 ## The Odin Project, Weather App. 
 ### Setting Up The Enviroment
 
-- Create repo.
-- Git clone SSH key into teminal and cd into it.
+- In **Github**
+  - Create repo.
+  - Git clone SSH key into teminal and cd into it.
+
 
 - In the **terminal**
- - Type `npm init -y` to initialize it/create a JSON file. 
- - Type `npm install webpack webpack-cli --save-dev` to install webpack.
- - Type `npm install eslint --save-dev` to setup eslint. 
- - Type `./node_modules/.bin/eslint --init` 
-  - There are several questions that need to be answered.
-   - Need help with those questions? Click on [this link.](https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code#step-3-installing-the-eslint-extension)
- - Type `npm install -g install-peerdeps install-peerdeps --dev eslint-config-airbnb`.
- - Type `npm install --save-dev style-loader css-loader`.
- - Type `npm install --save-dev html-webpack-plugin`.
- - Type `npm install -D babel-loader @babel/core @babel/preset-env webpack`.
- - Type `npm install @babel/cli"`
+  - Type `npm init -y` to initialize it/create a JSON file. 
+  - Type `npm install webpack webpack-cli --save-dev` to install webpack.
+  - Type `npm install eslint --save-dev` to setup eslint. 
+  - Type `./node_modules/.bin/eslint --init` 
+    - There are several questions that need to be answered.
+      - Need help with those questions? Click on [this link.](https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code#step-3-installing-the-eslint-extension)
+  - Type `npm install -g install-peerdeps install-peerdeps --dev eslint-config-airbnb`.
+  - Type `npm install --save-dev style-loader css-loader`.
+  - Type `npm install --save-dev html-webpack-plugin`.
+  - Type `npm install -D babel-loader @babel/core @babel/preset-env webpack`.
+  - Type `npm install @babel/cli"`
+
 
 - In **VS Code**  
- - Create a `dist` folder.
- - Create a `src` folder.
-  - Create a `index.js` file.
-   - At that very top of this file, add `import './style.css';`.
-  - Create a `template.html` file.
-  - Create a `style.css` file. 
- - Create a `.gitignore` file, and type `node_modules` in it, to ignore all those files. 
- - Create a `webpack.config.js` file.
-  - Paste the following block code:
+  - Create a `dist` folder.
+  - Create a `src` folder.
+    - Create a `index.js` file.
+      - At that very top of this file, add `import './style.css';`.
+    - Create a `template.html` file.
+    - Create a `style.css` file. 
+  - Create a `.gitignore` file, and type `node_modules` in it, to ignore all those files. 
+  - Create a `webpack.config.js` file.
+    - Paste the following block code:
 
   ```javascript
     const path = require("path");
@@ -78,16 +81,16 @@
     },
     };
   ```
- - In the `package.json` file.
-  - Go to `script` section and replace it's contents with the following code block:
+  - In the `package.json` file.
+    - Go to `script` section and replace it's contents with the following code block:
   ```javascript
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --watch"
   ``` 
- - Open the Commande Palette.
-  - Type and open `Preferences: Open Workspace Settings (JSON)`.
-   - Clear this page and paste the following code block:
+  - Open the Commande Palette.
+    - Type and open `Preferences: Open Workspace Settings (JSON)`.
+      - Clear this page and paste the following code block:
    ```javascript
     {
     "editor.codeActionsOnSave": {
@@ -118,4 +121,4 @@
     }
     }
   ```
-   - Add additional rules, or make changes as needed. 
+  - Add additional rules, or make changes as needed. 
