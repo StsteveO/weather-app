@@ -4,10 +4,11 @@
 
 - In **Github**
   - Create repo.
-  - Git clone SSH key into teminal and cd into it.
+  - Git clone SSH key. 
 
 
 - In the **terminal**
+  - Git clone SSH key from github, and `cd` into it. 
   - Type `npm init -y` to initialize it/create a JSON file. 
   - Type `npm install webpack webpack-cli --save-dev` to install webpack.
   - Type `npm install eslint --save-dev` to setup eslint. 
