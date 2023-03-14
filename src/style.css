@@ -1,22 +1,121 @@
-/* .example{
-    color: red;
-    font-size: xx-large;
-    font-weight: bold;
-    text-align: center;
-} */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: rgb(199, 199, 199);
+}
+:root {
+  /* --custom name: value; */
+  /* --light-green-bg: #476529; */
+  /* example, color: var(--navy-clr) */
+  --header-clr: rgb(90, 141, 161);
+  --nav-clr: #4C5958;
+  --main-clr: #BFBFBF;
+  --high-pri-clr: #DB2E1A;
+  --med-pri-clr: #D6AB0F;
+  --low-pri-clr: #10A11C;
+  --default-list-clr: #8AA6A3;
+}
 
-body {
-        display: flex;
-        flex-direction: column;
-      }
-      img {
-        margin: 1rem;
-        max-width: 40%;
-        height: auto;
-        border: 2px solid black;
-        border-radius: 2rem;
-        margin-left: auto;
-        margin-right: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
+.page-container {
+  height: 100%;
+  display: grid;
+  /* grid-template-columns: auto 1fr; */
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  background-color: var(--header-clr);
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 1rem;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.conversions{
+  margin-top: 1rem;
+}
+.fahrenheit{
+  margin-right: 1rem;
+}
+h1{
+  font-size: xx-large;
+  font-weight: bolder;
+  text-shadow: 4px 4px 10px grey;
+}
+
+main{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+.town{
+  font-size: x-large;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  margin-top: 1rem;
+}
+.date{
+  font-style: italic;
+}
+.card-container{
+  margin: 2rem;
+  padding: 0 2rem 2rem 2rem;
+}
+.weather{
+  font-style: italic;
+}
+.temperature{
+  font-size: 4rem;
+  font-weight: bolder;
+  margin-top: 0.5rem;
+}
+.temp-feels-like{
+  font-size: medium;
+  font-style: italic;
+}
+.sunrise-time{
+  font-size: medium;
+  margin-top: auto;
+  font-style: italic;
+}
+.sunset-time{
+  font-size: medium;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.card-container{
+  width: 80%;
+  height: 75%;
+  border: 2px solid black;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  background-color: rgb(90, 141, 161);
+}
+
+img {
+  margin: 1rem;
+  max-width: 50%;
+  height: auto;
+  /* border: 2px solid black; */
+  border-radius: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), */
+    /* 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  background-color: rgb(90, 141, 161);
+}
